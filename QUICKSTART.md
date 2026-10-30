@@ -19,21 +19,25 @@ The app opens automatically at http://localhost:5173
 ### 2. Test Features
 
 **Search Users:**
+
 - Type a GitHub username (e.g., "torvalds", "gvanrossum", "dhh")
 - Results appear as you type
 - Results are paginated (30 per page max)
 
 **Like Users:**
+
 - Click the heart icon on any user card
 - Liked users saved permanently in your browser
 - View all liked users in the "Liked" tab
 
 **View Profiles:**
+
 - Click any user card to see their full profile
 - View repositories, followers, and following lists
 - Access links to GitHub profiles
 
 **Dark Mode:**
+
 - Click sun/moon icon in top right
 - Switches between light and dark themes
 
@@ -45,7 +49,7 @@ The app opens automatically at http://localhost:5173
 ✅ **Profiles** - View detailed user information  
 ✅ **Responsive** - Works on mobile and desktop  
 ✅ **Dark Mode** - Built-in theme toggle  
-✅ **Share** - URLs preserve your state  
+✅ **Share** - URLs preserve your state
 
 ## 🔧 Available Commands
 
@@ -80,19 +84,23 @@ Get a token at: https://github.com/settings/tokens
 ## ❓ Troubleshooting
 
 **Port 5173 already in use?**
+
 ```bash
 # Vite will use next available port, check terminal for URL
 ```
 
 **API rate limit exceeded?**
+
 - Add GitHub token to `.env.local`
 - Wait 1 hour for limit reset
 
 **Liked users not persisting?**
+
 - Check browser hasn't disabled localStorage
 - Try different browser if issue persists
 
 **TypeScript errors after clone?**
+
 ```bash
 rm -rf node_modules package-lock.json
 npm install

@@ -5,6 +5,7 @@
 When searching for GitHub users, two critical errors occurred:
 
 1. **Redux Persist Serialization Error**
+
    ```
    "A non-serializable value was detected in an action, in the path: `register`."
    ```
@@ -17,11 +18,13 @@ When searching for GitHub users, two critical errors occurred:
 ## Root Causes
 
 ### Issue #1: Redux Persist Serialization Warning
+
 **Cause:** Redux Toolkit's strict mode checks for non-serializable values. When Redux Persist dispatches the `PERSIST` action, it contains references to the persist engine which are not serializable.
 
 **Solution:** Configure Redux store middleware to ignore serialization checks for the `PERSIST` action.
 
 ### Issue #2: Undefined Value TypeError
+
 **Cause:** The GitHub API response sometimes returns `undefined` for the `followers` and `following` fields. The code attempted to call `.toLocaleString()` on these undefined values, causing a runtime error.
 
 **Solution:** Add null coalescing operators (`??`) to provide default values (0) when these fields are undefined.
@@ -33,26 +36,26 @@ When searching for GitHub users, two critical errors occurred:
 ```typescript
 // Before
 export const store = configureStore({
-  reducer: {
-    search: searchReducer,
-    liked: persistedLikedReducer,
-    userDetail: userDetailReducer,
-  },
+	reducer: {
+		search: searchReducer,
+		liked: persistedLikedReducer,
+		userDetail: userDetailReducer,
+	},
 })
 
 // After
 export const store = configureStore({
-  reducer: {
-    search: searchReducer,
-    liked: persistedLikedReducer,
-    userDetail: userDetailReducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [PERSIST],
-      },
-    }),
+	reducer: {
+		search: searchReducer,
+		liked: persistedLikedReducer,
+		userDetail: userDetailReducer,
+	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [PERSIST],
+			},
+		}),
 })
 ```
 
@@ -100,17 +103,19 @@ export const store = configureStore({
 
 ✅ **TypeScript Compilation:** `npm run type-check` - PASS (no errors)  
 ✅ **Production Build:** `npm run build` - SUCCESS (4.11s)  
-✅ **Bundle Size:** 162 KB (gzip) - unchanged  
+✅ **Bundle Size:** 162 KB (gzip) - unchanged
 
 ## Testing Results
 
 ### Before Fix
+
 - ❌ Search results displayed error
 - ❌ Console showed TypeError
 - ❌ Redux Persist warning appeared
 - ❌ User cards did not render
 
 ### After Fix
+
 - ✅ Search results display correctly
 - ✅ No TypeError in console
 - ✅ Redux Persist warning resolved
@@ -159,7 +164,7 @@ The GitHub API sometimes returns incomplete data, especially for users without f
 ✅ **No breaking changes**  
 ✅ **Backward compatible**  
 ✅ **Production ready**  
-✅ **No performance impact**  
+✅ **No performance impact**
 
 ## Related Issues
 

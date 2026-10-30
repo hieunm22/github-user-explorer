@@ -35,6 +35,7 @@ echo "VITE_GITHUB_API_TOKEN=your_github_token" > .env.local
    ```
 
 **Why use a token?**
+
 - Rate limit: 5,000 requests/hour (vs 60 without)
 - Better for development
 - No login required
@@ -48,6 +49,7 @@ npm run dev
 ```
 
 The application will:
+
 - Open at http://localhost:5173
 - Enable hot module replacement
 - Show TypeScript errors in terminal
@@ -65,6 +67,7 @@ The application will:
 ### Manual Testing Checklist
 
 #### Search Functionality
+
 ```
 [ ] Search input appears
 [ ] Typing triggers API calls (with debounce)
@@ -75,6 +78,7 @@ The application will:
 ```
 
 #### User Cards
+
 ```
 [ ] Avatar displays correctly
 [ ] Username shows
@@ -85,6 +89,7 @@ The application will:
 ```
 
 #### Liked Page
+
 ```
 [ ] Liked users display as cards
 [ ] Like count updates in header
@@ -95,6 +100,7 @@ The application will:
 ```
 
 #### User Detail Page
+
 ```
 [ ] Page loads user information
 [ ] Avatar, name, bio display
@@ -108,6 +114,7 @@ The application will:
 ```
 
 #### Responsive Design
+
 ```
 [ ] Mobile (375px):
     - Single column layout
@@ -126,6 +133,7 @@ The application will:
 ```
 
 #### Dark Mode
+
 ```
 [ ] Toggle button present (sun/moon icon)
 [ ] Light theme loads by default
@@ -135,6 +143,7 @@ The application will:
 ```
 
 #### Performance
+
 ```
 [ ] Page loads within 3 seconds
 [ ] Animations smooth (60fps)
@@ -149,19 +158,20 @@ Create `src/__tests__/` directory with tests:
 
 ```typescript
 // Example: src/__tests__/searchSlice.test.ts
-import { configureStore } from '@reduxjs/toolkit'
-import searchReducer, { setQuery, searchUsers } from '@store/slices/searchSlice'
+import { configureStore } from "@reduxjs/toolkit"
+import searchReducer, { searchUsers, setQuery } from "@/store/slices/searchSlice"
 
-describe('searchSlice', () => {
-  it('should set query', () => {
-    const store = configureStore({ reducer: { search: searchReducer } })
-    store.dispatch(setQuery('react'))
-    expect(store.getState().search.query).toBe('react')
-  })
+describe("searchSlice", () => {
+	it("should set query", () => {
+		const store = configureStore({ reducer: { search: searchReducer } })
+		store.dispatch(setQuery("react"))
+		expect(store.getState().search.query).toBe("react")
+	})
 })
 ```
 
 Run tests (when implemented):
+
 ```bash
 npm run test
 ```
@@ -189,7 +199,7 @@ const user: any = response.data
 const user: GitHubUser = response.data
 
 // ❌ Never use implicit any
-const handleClick = (e) => {}  // e is any
+const handleClick = (e) => {} // e is any
 
 // ✅ Always type your params
 const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {}
@@ -210,16 +220,17 @@ npm run lint -- --fix
 ### Best Practices
 
 1. **Component Structure**
+
    ```typescript
    // Imports first
    import React from 'react'
    import { useSelector, useDispatch } from 'react-redux'
-   
+
    // Props type
    interface ComponentProps {
      title: string
    }
-   
+
    // Component
    export const Component: React.FC<ComponentProps> = ({ title }) => {
      return <div>{title}</div>
@@ -227,13 +238,14 @@ npm run lint -- --fix
    ```
 
 2. **Redux Actions**
+
    ```typescript
    // Name actions clearly
    export const fetchUserDetail = createAsyncThunk(
-     'userDetail/fetchUserDetail',  // 'slice/action' format
-     async (username: string) => {
-       // async work
-     }
+   	"userDetail/fetchUserDetail", // 'slice/action' format
+   	async (username: string) => {
+   		// async work
+   	},
    )
    ```
 
@@ -273,11 +285,11 @@ npm run lint -- --fix
 
 ```typescript
 // Good - informative
-console.log('[SearchPage] Query:', query, 'Results:', results.length)
+console.log("[SearchPage] Query:", query, "Results:", results.length)
 
 // Bad - vague
-console.log('data')
-console.log('loaded')
+console.log("data")
+console.log("loaded")
 ```
 
 ## Build Verification
@@ -318,6 +330,7 @@ $ npm run preview
 **Symptoms:** "API rate limit exceeded" errors
 
 **Solutions:**
+
 1. Add GitHub token to `.env.local`
 2. Wait an hour for limit reset
 3. Use different rate-limited endpoint (if available)
@@ -327,6 +340,7 @@ $ npm run preview
 **Symptoms:** Theme toggle present but theme doesn't change
 
 **Check:**
+
 ```bash
 # Verify Material-UI theme provider in App.tsx
 # Ensure isDarkMode state is being toggled
@@ -338,6 +352,7 @@ $ npm run preview
 **Symptoms:** Liked users lost after refresh
 
 **Check:**
+
 ```bash
 # Verify Redux Persist configuration
 # Check localStorage in DevTools
@@ -350,6 +365,7 @@ $ npm run preview
 **Symptoms:** Too many API calls, rate limit issues
 
 **Check:**
+
 ```typescript
 // Verify SearchBar.tsx has setTimeout
 // Check useEffect cleanup function exists
@@ -359,6 +375,7 @@ $ npm run preview
 ### Issue: Type Errors After Changes
 
 **Solutions:**
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules package-lock.json

@@ -1,7 +1,7 @@
 interface ImportMetaEnv {
-  readonly VITE_GITHUB_API_TOKEN?: string
+	readonly VITE_GITHUB_API_TOKEN?: string
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv
+	readonly env: ImportMetaEnv
 }

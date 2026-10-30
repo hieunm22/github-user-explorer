@@ -76,28 +76,30 @@ When ready for review:
 Deploy to a public URL. Some options:
 
 - **Vercel** (recommended for Vite)
+
   ```bash
   npm install -g vercel
   vercel
   ```
-  
+
 - **Netlify**
+
   ```bash
   npm install -g netlify-cli
   netlify deploy --prod --dir=dist
   ```
-  
+
 - **GitHub Pages**
   - Build: `npm run build`
   - Deploy dist/ to gh-pages branch
-  
+
 - **AWS Amplify**, **Railway**, or other hosting
 
 ### 8. Create Pull Request
 
 When creating the PR, include the following description:
 
-```markdown
+````markdown
 # GitHub User Explorer - Oddle Frontend Challenge
 
 ## Submission Information
@@ -109,6 +111,7 @@ When creating the PR, include the following description:
 ## Challenge Completion
 
 ### Basic Requirements ✓
+
 - [x] Search users by username with pagination
 - [x] Display user cards with avatar, followers, following counts
 - [x] Like/unlike functionality
@@ -119,6 +122,7 @@ When creating the PR, include the following description:
   - [x] Following tab
 
 ### Bonus Features Implemented ✓
+
 - [x] Responsive design (mobile + desktop)
 - [x] Shareable URLs with browser history
 - [x] Search as you type
@@ -150,32 +154,36 @@ When creating the PR, include the following description:
 npm install
 npm run dev
 ```
+````
 
 Then open http://localhost:5173 in your browser.
+
 ```
 
 ## Important Notes
 
 - **API Rate Limiting:** Without a GitHub token, you get 60 requests/hour. For development, create a token and add it to `.env.local`:
-  ```
-  VITE_GITHUB_API_TOKEN=your_personal_access_token
-  ```
+```
+
+VITE_GITHUB_API_TOKEN=your_personal_access_token
+
+```
 
 - **Deployment Considerations:**
-  - The app is fully static after build
-  - No server-side processing required
-  - Can be deployed to any static hosting
-  - Build output is in `dist/` directory
+- The app is fully static after build
+- No server-side processing required
+- Can be deployed to any static hosting
+- Build output is in `dist/` directory
 
 - **Performance:**
-  - Search is debounced (300ms) to reduce API calls
-  - Pagination limits results to 30 per page
-  - Lazy loading of images
-  - Code splitting handled by Vite
+- Search is debounced (300ms) to reduce API calls
+- Pagination limits results to 30 per page
+- Lazy loading of images
+- Code splitting handled by Vite
 
 - **Browser Support:**
-  - Chrome, Firefox, Safari, Edge (all recent versions)
-  - Mobile browsers fully supported
+- Chrome, Firefox, Safari, Edge (all recent versions)
+- Mobile browsers fully supported
 
 ## Support
 
@@ -192,3 +200,4 @@ For questions or issues:
 - **Bonus Tasks:** Highly encouraged if time permits
 
 Good luck with your submission!
+```

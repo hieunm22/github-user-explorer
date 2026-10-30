@@ -97,6 +97,7 @@ GET /users/{username}/following
 ```
 
 Features:
+
 - URL parameters preserved for sharing
 - Browser history navigation works
 - Deep linking supported
@@ -117,32 +118,37 @@ Features:
 ### Color Scheme
 
 **Light Theme:**
+
 - Primary: #0969da (GitHub Blue)
 - Secondary: #6f42c1 (Purple)
 
 **Dark Theme:**
+
 - Primary: #58a6ff (Light Blue)
 - Secondary: #79c0ff (Lighter Blue)
 
 ## Performance Optimizations
 
 ### Search Debouncing
+
 ```typescript
 // 300ms debounce in SearchBar component
 useEffect(() => {
-  const timer = setTimeout(() => {
-    dispatch(searchUsers({ query: inputValue, page: 1 }))
-  }, 300)
-  return () => clearTimeout(timer)
+	const timer = setTimeout(() => {
+		dispatch(searchUsers({ query: inputValue, page: 1 }))
+	}, 300)
+	return () => clearTimeout(timer)
 }, [inputValue])
 ```
 
 ### Pagination
+
 - API results limited to 30 per page
 - GitHub API max is 100, but 30 provides better UX
 - Page count capped at 34 (GitHub limitation)
 
 ### Redux Selectors
+
 - Selectors used throughout to avoid unnecessary re-renders
 - Redux Persist only persists liked users (not search results)
 
@@ -151,14 +157,15 @@ useEffect(() => {
 ### Key Type Files
 
 **src/types/github.ts**
+
 ```typescript
 interface GitHubUser {
-  id: number
-  login: string
-  avatar_url: string
-  followers: number
-  following: number
-  // ... other fields
+	id: number
+	login: string
+	avatar_url: string
+	followers: number
+	following: number
+	// ... other fields
 }
 ```
 
@@ -175,13 +182,14 @@ interface GitHubUser {
 
 ```typescript
 const persistConfig = {
-  key: 'root',
-  storage: localStorage,
-  whitelist: ['liked']  // Only persist liked users
+	key: "root",
+	storage: localStorage,
+	whitelist: ["liked"], // Only persist liked users
 }
 ```
 
 **Why persist only `liked`?**
+
 - Search results are ephemeral (user types new query)
 - Liked users are intentional and need persistence
 - Reduces localStorage bloat
@@ -224,18 +232,21 @@ lg={3}       // Large: 4 columns
 ## Future Enhancement Opportunities
 
 ### Easy Wins
+
 - [ ] Image lazy loading
 - [ ] Search suggestions
 - [ ] Recent searches
 - [ ] Star animation on like
 
 ### Medium Complexity
+
 - [ ] Advanced filters (location, language)
 - [ ] Repository comparison
 - [ ] User activity timeline
 - [ ] Export liked users as JSON/CSV
 
 ### Advanced
+
 - [ ] Server-side rendering (Next.js migration)
 - [ ] Infinite scroll instead of pagination
 - [ ] Progressive Web App capabilities
@@ -255,6 +266,7 @@ npm run preview      # Preview production build
 ```
 
 ### Output Size
+
 - HTML: 0.47 kB (gzip: 0.30 kB)
 - CSS: 0.29 kB (gzip: 0.23 kB)
 - JS: 502 kB minified (162 kB gzip)
@@ -270,17 +282,17 @@ npm run preview      # Preview production build
 
 ```typescript
 // Example test structure
-describe('SearchPage', () => {
-  it('should search users on input change')
-  it('should paginate results')
-  it('should display error messages')
-  it('should show loading state')
+describe("SearchPage", () => {
+	it("should search users on input change")
+	it("should paginate results")
+	it("should display error messages")
+	it("should show loading state")
 })
 
-describe('ReduxStore', () => {
-  it('should like/unlike users')
-  it('should persist liked users')
-  it('should handle API errors')
+describe("ReduxStore", () => {
+	it("should like/unlike users")
+	it("should persist liked users")
+	it("should handle API errors")
 })
 ```
 
@@ -304,12 +316,12 @@ describe('ReduxStore', () => {
 
 ## Decision Log
 
-| Decision | Rationale | Alternatives |
-|----------|-----------|--------------|
-| Redux over Context | Persistence, DevTools, larger app | Context API |
-| Material-UI | Complete component library, accessibility | Bootstrap, Tailwind |
-| Vite over CRA | Fast refresh, modern bundler | Create React App |
-| TypeScript | Type safety, better DX | JavaScript |
-| Redux Persist | Automatic storage serialization | Manual localStorage |
-| 300ms debounce | Balances UX and API calls | No debounce, 500ms+ |
-| 30 results/page | Better UX than max 100 | 100, 10, etc |
+| Decision           | Rationale                                 | Alternatives        |
+| ------------------ | ----------------------------------------- | ------------------- |
+| Redux over Context | Persistence, DevTools, larger app         | Context API         |
+| Material-UI        | Complete component library, accessibility | Bootstrap, Tailwind |
+| Vite over CRA      | Fast refresh, modern bundler              | Create React App    |
+| TypeScript         | Type safety, better DX                    | JavaScript          |
+| Redux Persist      | Automatic storage serialization           | Manual localStorage |
+| 300ms debounce     | Balances UX and API calls                 | No debounce, 500ms+ |
+| 30 results/page    | Better UX than max 100                    | 100, 10, etc        |

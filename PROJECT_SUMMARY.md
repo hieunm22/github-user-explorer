@@ -12,6 +12,7 @@ A fully-featured GitHub user search and exploration application built as a submi
 ### All Requirements Met ✅
 
 #### Basic Requirements (15/15)
+
 - ✅ Search users by username with pagination
 - ✅ Display user cards with avatar, followers, following counts
 - ✅ Like/unlike functionality
@@ -19,6 +20,7 @@ A fully-featured GitHub user search and exploration application built as a submi
 - ✅ Detailed user profiles with repositories, followers, following
 
 #### Bonus Features (6/6)
+
 - ✅ Responsive design (mobile + desktop)
 - ✅ Shareable URLs with state preservation
 - ✅ Search as you type
@@ -28,17 +30,17 @@ A fully-featured GitHub user search and exploration application built as a submi
 
 ## Technology Stack
 
-| Layer | Technology | Version |
-|-------|-----------|---------|
-| Framework | React | 18.2.0 |
-| Language | TypeScript | 5.3.3 |
-| State Management | Redux Toolkit | 1.9.7 |
-| Data Persistence | Redux Persist | 6.0.0 |
-| UI Components | Material-UI | 5.14.20 |
-| HTTP Client | Axios | 1.6.8 |
-| Routing | React Router | 6.20.0 |
-| Build Tool | Vite | 5.0.8 |
-| CSS-in-JS | Emotion | 11.11.x |
+| Layer            | Technology    | Version |
+| ---------------- | ------------- | ------- |
+| Framework        | React         | 18.2.0  |
+| Language         | TypeScript    | 5.3.3   |
+| State Management | Redux Toolkit | 1.9.7   |
+| Data Persistence | Redux Persist | 6.0.0   |
+| UI Components    | Material-UI   | 5.14.20 |
+| HTTP Client      | Axios         | 1.6.8   |
+| Routing          | React Router  | 6.20.0  |
+| Build Tool       | Vite          | 5.0.8   |
+| CSS-in-JS        | Emotion       | 11.11.x |
 
 ## Project Structure
 
@@ -77,18 +79,21 @@ Documentation: 6 comprehensive guides
 ## Key Features
 
 ### Search Functionality
+
 - Real-time search with 300ms debounce
 - Results sorted by followers (descending)
 - Pagination: 30 results per page
 - Search results in URL for sharing
 
 ### User Management
+
 - Like/unlike users
 - Persistent liked users list (browser storage)
 - View all liked users
 - Like count in navigation header
 
 ### User Profiles
+
 - Complete user information display
 - Three tabs: Repositories, Followers, Following
 - Repository details with links
@@ -96,6 +101,7 @@ Documentation: 6 comprehensive guides
 - Shareable profile URLs
 
 ### User Experience
+
 - Dark mode toggle
 - Responsive design (mobile-first)
 - Loading indicators
@@ -106,6 +112,7 @@ Documentation: 6 comprehensive guides
 ## Installation & Running
 
 ### Quick Start (5 minutes)
+
 ```bash
 cd ~/projects/hieunm/github
 npm install
@@ -114,6 +121,7 @@ npm run dev
 ```
 
 ### Production Build
+
 ```bash
 npm run build        # Create optimized build
 npm run preview      # Test production build
@@ -121,7 +129,9 @@ npm run type-check   # Verify TypeScript
 ```
 
 ### Optional: GitHub API Token
+
 Create `.env.local` for higher rate limits:
+
 ```env
 VITE_GITHUB_API_TOKEN=your_github_token
 ```
@@ -129,18 +139,21 @@ VITE_GITHUB_API_TOKEN=your_github_token
 ## Testing Results
 
 ### Type Safety ✅
+
 - TypeScript strict mode enabled
 - No `any` types used
 - All type errors resolved
 - Type checking: PASS
 
 ### Build Verification ✅
+
 - Production build: SUCCESS
 - Output size: 163 kB gzip (optimized)
 - No warnings or errors
 - Ready for deployment
 
 ### Manual Testing ✅
+
 - Search functionality: TESTED
 - Like/unlike: TESTED
 - Persistence: TESTED
@@ -152,6 +165,7 @@ VITE_GITHUB_API_TOKEN=your_github_token
 ## API Integration
 
 ### GitHub REST API Endpoints Used
+
 ```
 GET /search/users
 GET /users/{username}
@@ -161,6 +175,7 @@ GET /users/{username}/following
 ```
 
 ### Rate Limits
+
 - **Without token:** 60 requests/hour
 - **With token:** 5,000 requests/hour
 - Token configured via `VITE_GITHUB_API_TOKEN`
@@ -168,12 +183,14 @@ GET /users/{username}/following
 ## Code Quality
 
 ### TypeScript
+
 - Strict mode enabled
 - Full type coverage
 - Type-safe Redux actions
 - Type-safe components
 
 ### State Management
+
 - Redux Toolkit for simplified Redux
 - Three focused slices (search, liked, userDetail)
 - Async thunks for API calls
@@ -181,12 +198,14 @@ GET /users/{username}/following
 - Proper error handling
 
 ### Components
+
 - Functional components only
 - Hooks-based architecture
 - Reusable and modular
 - Proper separation of concerns
 
 ### Styling
+
 - Material-UI components
 - Emotion CSS-in-JS
 - Responsive breakpoints
@@ -196,6 +215,7 @@ GET /users/{username}/following
 ## Performance
 
 ### Optimizations Implemented
+
 - Search debouncing (300ms)
 - Pagination (30 per page)
 - Redux selectors (reduce re-renders)
@@ -205,6 +225,7 @@ GET /users/{username}/following
 - JavaScript minification
 
 ### Metrics
+
 - Page load: < 3 seconds
 - First paint: < 1 second
 - API calls: Debounced and paginated
@@ -259,6 +280,7 @@ All documentation files are comprehensive and cover:
 ## Deployment Options
 
 ### Ready-to-Deploy Build
+
 ```bash
 npm run build  # Creates dist/ folder
 ```
@@ -266,11 +288,13 @@ npm run build  # Creates dist/ folder
 ### Recommended Platforms
 
 1. **Vercel** (Recommended for Vite)
+
    ```bash
    npm i -g vercel && vercel
    ```
 
 2. **Netlify**
+
    ```bash
    npm i -g netlify-cli && netlify deploy --prod --dir=dist
    ```
@@ -286,6 +310,7 @@ npm run build  # Creates dist/ folder
 ## Git Repository
 
 ### Commit History
+
 ```
 c076e9a Add features checklist and quick start guide
 4ceb3c4 Add comprehensive documentation
@@ -294,6 +319,7 @@ a0f8772 Initial commit: GitHub User Explorer project setup
 ```
 
 ### Ready for GitHub
+
 - Clean commit history
 - Proper .gitignore
 - No secrets in commits
@@ -302,14 +328,17 @@ a0f8772 Initial commit: GitHub User Explorer project setup
 ## Environment Setup
 
 ### Node Version
+
 - Required: Node.js >= 18.0.0
 - Recommended: Node.js 18.x or 20.x
 
 ### Package Manager
+
 - npm >= 9.0.0
 - (Can also use pnpm or yarn)
 
 ### Browser Requirements
+
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
@@ -319,6 +348,7 @@ a0f8772 Initial commit: GitHub User Explorer project setup
 ## Verification Checklist
 
 ### Before Submission
+
 - [x] All features implemented
 - [x] Type checking passes
 - [x] Build succeeds
@@ -333,6 +363,7 @@ a0f8772 Initial commit: GitHub User Explorer project setup
 - [x] No secrets in code
 
 ### Ready to Submit
+
 - [x] Project location: `~/projects/hieunm/github`
 - [x] Git initialized and committed
 - [x] README with setup instructions
@@ -343,18 +374,18 @@ a0f8772 Initial commit: GitHub User Explorer project setup
 
 ## Key Statistics
 
-| Metric | Value |
-|--------|-------|
-| TypeScript Files | 23 |
-| Components | 4 |
-| Pages | 3 |
-| Redux Slices | 3 |
-| API Endpoints | 5 |
-| Documentation Files | 6 |
-| Total Lines of Code | ~2,000 |
-| Build Size (gzip) | 162 kB |
-| Type Coverage | 100% |
-| Bundle Analysis | ✅ Optimized |
+| Metric              | Value        |
+| ------------------- | ------------ |
+| TypeScript Files    | 23           |
+| Components          | 4            |
+| Pages               | 3            |
+| Redux Slices        | 3            |
+| API Endpoints       | 5            |
+| Documentation Files | 6            |
+| Total Lines of Code | ~2,000       |
+| Build Size (gzip)   | 162 kB       |
+| Type Coverage       | 100%         |
+| Bundle Analysis     | ✅ Optimized |
 
 ## Next Steps for Submission
 
@@ -383,17 +414,20 @@ a0f8772 Initial commit: GitHub User Explorer project setup
 ## Support & Resources
 
 ### Documentation
+
 - All docs in repository root
 - Well-organized and comprehensive
 - Includes examples and snippets
 
 ### Troubleshooting
+
 - DEVELOPMENT.md has common issues
 - Check browser console for errors
 - Use Redux DevTools for debugging
 - Network tab shows API calls
 
 ### Learning Resources
+
 - [React Docs](https://react.dev)
 - [Redux Toolkit Docs](https://redux-toolkit.js.org)
 - [Material-UI Docs](https://mui.com)
@@ -404,6 +438,7 @@ a0f8772 Initial commit: GitHub User Explorer project setup
 ## Summary
 
 This is a **production-ready** GitHub user explorer application that:
+
 - ✅ Meets all basic requirements
 - ✅ Implements all bonus features
 - ✅ Uses modern tech stack
